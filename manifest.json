@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Focus Analytics",
+  "version": "1.0.0",
+  "description": "Track browsing behavior, build focus metrics, and generate rule-based productivity insights.",
+  "action": {
+    "default_title": "Focus Analytics",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "options_page": "settings.html",
+  "permissions": [
+    "storage",
+    "tabs",
+    "idle",
+    "alarms",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "minimum_chrome_version": "114"
+}

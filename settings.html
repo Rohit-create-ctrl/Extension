@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Analytics Settings</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <h1>Settings</h1>
+            <p>Adjust productivity rules, focus thresholds, and export preferences.</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <a class="button secondary" href="dashboard.html" target="_blank" rel="noreferrer">Dashboard</a>
+          <button class="button" id="saveSettingsButton" type="button">Save settings</button>
+        </div>
+      </header>
+
+      <section class="panel" style="margin-bottom:18px;">
+        <h3>Classification lists</h3>
+        <div class="field-grid">
+          <div class="field">
+            <label for="productiveDomains">Productive sites</label>
+            <textarea class="textarea" id="productiveDomains" placeholder="chatgpt.com\ngithub.com\nstackoverflow.com"></textarea>
+            <div class="help-text">One domain per line. Subdomains match automatically.</div>
+          </div>
+          <div class="field">
+            <label for="distractingDomains">Distracting sites</label>
+            <textarea class="textarea" id="distractingDomains" placeholder="youtube.com\ninstagram.com\nx.com"></textarea>
+            <div class="help-text">Use this list to shape insights and scoring.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:18px;">
+        <h3>Focus detection</h3>
+        <div class="field-grid">
+          <div class="field range-wrap">
+            <label for="focusSessionMinMinutes">Minimum focus session length</label>
+            <input id="focusSessionMinMinutes" type="number" min="5" max="240" step="1" class="input" />
+            <div class="help-text">Sessions shorter than this are ignored in focus analytics.</div>
+          </div>
+          <div class="field range-wrap">
+            <label for="interruptionGraceSeconds">Short interruption grace</label>
+            <input id="interruptionGraceSeconds" type="number" min="5" max="120" step="1" class="input" />
+            <div class="help-text">Interruptions shorter than this stay inside the same focus session.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:18px;">
+        <h3>Export settings</h3>
+        <div class="field-grid">
+          <label class="card" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <input id="includeSegments" type="checkbox" />
+            <span>
+              <strong>Include browsing segments</strong>
+              <span class="help-text">Exports each browsing segment with timestamps and reasons.</span>
+            </span>
+          </label>
+          <label class="card" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <input id="includeFocusSessions" type="checkbox" />
+            <span>
+              <strong>Include focus sessions</strong>
+              <span class="help-text">Adds derived focus session summaries.</span>
+            </span>
+          </label>
+          <label class="card" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <input id="includeInsights" type="checkbox" />
+            <span>
+              <strong>Include insights</strong>
+              <span class="help-text">Adds rule-based behavioral observations.</span>
+            </span>
+          </label>
+          <label class="card" style="display:flex;align-items:center;gap:12px;cursor:pointer;">
+            <input id="includeSettings" type="checkbox" />
+            <span>
+              <strong>Include settings</strong>
+              <span class="help-text">Embeds the active configuration in JSON exports.</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:18px;">
+        <h3>Data export</h3>
+        <div class="toolbar">
+          <button class="button secondary" id="exportCsvButton" type="button">Export CSV</button>
+          <button class="button secondary" id="exportJsonButton" type="button">Export JSON</button>
+          <button class="button ghost" id="resetDefaultsButton" type="button">Reset defaults</button>
+        </div>
+      </section>
+
+      <div id="settingsStatus" class="notice" hidden></div>
+    </main>
+
+    <script type="module" src="settings.js"></script>
+  </body>
+</html>

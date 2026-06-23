@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Analytics Dev</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .landing {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .landing-card {
+        max-width: 720px;
+        width: 100%;
+        padding: 28px;
+      }
+      .link-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+      @media (max-width: 720px) {
+        .link-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="landing">
+      <section class="card landing-card">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <h1>Focus Analytics dev server</h1>
+            <p>Open the extension pages below while developing locally.</p>
+          </div>
+        </div>
+        <div class="link-grid">
+          <a class="button" href="dashboard.html">Dashboard</a>
+          <a class="button secondary" href="popup.html">Popup</a>
+          <a class="button ghost" href="settings.html">Settings</a>
+        </div>
+        <p class="footer-note">Load the unpacked extension separately in <code>chrome://extensions</code> to test Chrome APIs.</p>
+      </section>
+    </main>
+  </body>
+</html>

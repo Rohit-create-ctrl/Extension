@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Analytics Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="dashboard">
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"></div>
+          <div>
+            <h1>Focus Analytics</h1>
+            <p>Behavioral insights for deep work, distractions, and tab patterns.</p>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button class="button secondary" id="refreshButton" type="button">Refresh</button>
+          <button class="button secondary" id="exportCsvButton" type="button">Export CSV</button>
+          <button class="button secondary" id="exportJsonButton" type="button">Export JSON</button>
+          <a class="button ghost" href="settings.html" target="_blank" rel="noreferrer">Settings</a>
+        </div>
+      </header>
+
+      <section class="hero">
+        <article class="hero-card">
+          <div class="pill" id="statusPill">Loading...</div>
+          <h2 id="heroTitle">Today's focus view</h2>
+          <p class="lede" id="heroSubtitle">Active time, focus sessions, productivity, and the sites shaping your attention.</p>
+          <div class="hero-actions" style="margin-top:16px;">
+            <button class="button" id="openPopupButton" type="button">Open popup</button>
+            <button class="button secondary" id="openSettingsButton" type="button">Edit rules</button>
+          </div>
+        </article>
+
+        <aside class="hero-side">
+          <div class="card">
+            <h3>Scoring formula</h3>
+            <p class="subtle" id="formulaText">
+              Productivity score = weighted productive time + focus bonus - tab-switch penalty - distraction penalty.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Data coverage</h3>
+            <p class="subtle" id="coverageText">Waiting for data...</p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="metric-grid" id="metricGrid">
+        <article class="card metric"><div class="label">Today active</div><div class="value" id="todayActive">0m</div><div class="delta" id="todayActiveDelta">&nbsp;</div></article>
+        <article class="card metric"><div class="label">This week</div><div class="value" id="weeklyActive">0m</div><div class="delta" id="weeklyActiveDelta">&nbsp;</div></article>
+        <article class="card metric"><div class="label">Tab switches</div><div class="value" id="tabSwitches">0</div><div class="delta" id="tabSwitchDelta">&nbsp;</div></article>
+        <article class="card metric"><div class="label">Idle time</div><div class="value" id="idleTime">0m</div><div class="delta" id="idleDelta">&nbsp;</div></article>
+        <article class="card metric"><div class="label">Productivity score</div><div class="value" id="productivityScore">0</div><div class="delta" id="scoreDelta">&nbsp;</div></article>
+        <article class="card metric"><div class="label">Focus sessions</div><div class="value" id="focusSessions">0</div><div class="delta" id="focusDelta">&nbsp;</div></article>
+      </section>
+
+      <section class="layout-grid">
+        <div class="chart-grid">
+          <article class="chart-card">
+            <h3>Website usage</h3>
+            <div class="chart-wrap"><canvas id="usagePieChart"></canvas></div>
+          </article>
+          <article class="chart-card">
+            <h3>Daily productivity</h3>
+            <div class="chart-wrap"><canvas id="productivityBarChart"></canvas></div>
+          </article>
+          <article class="chart-card">
+            <h3>Weekly activity</h3>
+            <div class="chart-wrap"><canvas id="weeklyLineChart"></canvas></div>
+          </article>
+          <article class="chart-card">
+            <h3>Active hours heatmap</h3>
+            <div class="chart-wrap tall"><canvas id="heatmapCanvas"></canvas></div>
+          </article>
+        </div>
+
+        <div class="split">
+          <article class="card">
+            <h3>Top websites</h3>
+            <ul class="list" id="topSitesList"></ul>
+          </article>
+          <article class="card">
+            <h3>Behavioral insights</h3>
+            <ul class="list" id="insightsList"></ul>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer-note" id="footerNote">MV3 service worker safe: every event is persisted to storage before the worker can terminate.</p>
+    </main>
+
+    <script type="module" src="dashboard.js"></script>
+  </body>
+</html>
